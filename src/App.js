@@ -1,7 +1,8 @@
 import React from "react"
-import Forms from './Forms.js'
-import Procedimentos from './procedimentos.js'
-import Cirurgias from './cirurgias.js'
+import Forms from './pages/Forms.js'
+import Procedimentos from './pages/procedimentos.js'
+import Cirurgias from './pages/cirurgias.js'
+import Summary from './pages/summary.js'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route exact path='/cirurgias'>
           <Cirurgias />
+        </Route>
+        <Route exact path='/summary'>
+          <Summary />
         </Route>
       </Switch>
     </div>
