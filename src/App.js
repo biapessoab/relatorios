@@ -2,7 +2,7 @@ import React from "react"
 import Forms from './pages/Forms.js'
 import Procedimentos from './pages/procedimentos.js'
 import Cirurgias from './pages/cirurgias.js'
-import Summary from './pages/summary.js'
+import Summary from './pages/summary.jsx'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 function App() {
