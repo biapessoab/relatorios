@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 function Summary() {
     const [procedimentos, setProcedimentos] = useState([]);
     const [cirurgias, setCirurgias] = useState([]);
-    const [colorProcedimentos, setColorProcedimentos] = useState([]);
-    const [colorCirurgias, setColorCirurgias] = useState([]);
+    const [colorProcedimentos, setColorProcedimentos] = useState('red');
+    const [colorCirurgias, setColorCirurgias] = useState('blue');
     
     useEffect(() => {
         const procedimentosString = localStorage.getItem('procedimentos');
@@ -27,24 +27,29 @@ function Summary() {
     const procedimentosFiltrados = procedimentos.filter(item => item.price > 0);
     const cirurgiasFiltradas = cirurgias.filter(item => item.price > 0);
 
-    const procedimentosUnderline = `decoration-${colorProcedimentos}`
-    const cirurgiasUnderline = `decoration-${colorCirurgias}`
+    const procedimentosStyle = {
+        textDecorationColor: colorProcedimentos,
+    };
+
+    const cirurgiasStyle = {
+        textDecorationColor: colorCirurgias,
+    };
 
     return (
         <div>
             <div className="flex justify-center">
                 <form className="pt-12" method="form" action="/summary">
                     <div className="flex justify-center text-4xl text-white mb-10">Resumo</div>
-                    <div className={`my-6 text-lg underline text-white underline-offset-4 ${procedimentosUnderline}`}>Procedimentos</div>
+                    <div className="my-6 text-lg underline text-white underline-offset-4" style={procedimentosStyle}>Procedimentos</div>
                     {procedimentosFiltrados.map((item, index) => (
-                        <div key={index} className='text-white'>
+                        <div key={index} className="text-white">
                             <p>{item.nome} ({item.quant}): R$ {item.price}</p>
                             <hr />
                         </div>
                     ))}
-                    <div className={`my-6 text-lg underline text-white underline-offset-4 ${cirurgiasUnderline}`}>Cirurgias</div>
+                    <div className="my-6 text-lg underline text-white underline-offset-4" style={cirurgiasStyle}>Cirurgias</div>
                     {cirurgiasFiltradas.map((item, index) => (
-                        <div key={index} className='text-white'>
+                        <div key={index} className="text-white">
                             <p>{item.nome}: R$ {item.price}</p>
                             <hr />
                         </div>
