@@ -14,6 +14,7 @@ export default function Cirurgias() {
         let orelhaAbano = document.getElementById('orelha-abano')
         let proteseMento = document.getElementById('protese-mento')
         let perfiloplastia = document.getElementById('perfiloplastia')
+        let color = document.getElementById('color')
 
         if (silicone.value === null) {
             silicone = 0
@@ -69,7 +70,8 @@ export default function Cirurgias() {
         const proteseMentoData = { nome: 'Prótese de mento', price: proteseMento.value };
         const perfiloplastiaData = { nome: 'Perfiloplastia', price: perfiloplastia.value };
 
-
+        const colorData = color.value
+        localStorage.setItem('colorCirurgias', JSON.stringify(colorData));
         const array = [siliconeData, mamoplastiaData, mastopexiaProteseData, mastopexiaData, lipoaspiracaoData, abdominoplastiaData, transplanteData, blefaroplastiaData, rinoplastiaData, liftingData, orelhaAbanoData, proteseMentoData, perfiloplastiaData];
         localStorage.setItem('cirurgias', JSON.stringify(array));
     }
@@ -84,7 +86,7 @@ export default function Cirurgias() {
                     <select name="color" id="color" className="bg-white rounded-md text-sm">
                         <option value="red">Vermelho</option>
                         <option value="yellow">Amarelo</option>
-                        <option value="green">Verde</option>
+                        <option value="lime">Verde</option>
                     </select>
                 </div>
                 <div className="p-2">

@@ -10,6 +10,7 @@ export default function Procedimentos() {
         let skynbooster = document.getElementById('skynbooster')
         let bioestimuladorFacial = document.getElementById('bioestimulador-facial')
         let bioestimuladorCorporal = document.getElementById('bioestimulador-corporal')
+        let color = document.getElementById('color')
 
         if (botox.value === null) {
             botox = 0
@@ -45,7 +46,8 @@ export default function Procedimentos() {
         const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * 2900 };
         const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * 2900 };
 
-
+        const colorData = color.value
+        localStorage.setItem('colorProcedimentos', JSON.stringify(colorData));
         const array = [botoxData, botoxFullfaceData, preenchimentoData, preenchimentoLabialData, rinomodelacaoData, skynboosterData, bioestimuladorFacialData, bioestimuladorCorporalData];
         localStorage.setItem('procedimentos', JSON.stringify(array));
     }
@@ -61,7 +63,7 @@ export default function Procedimentos() {
                         <select name="color" id="color" className="bg-white rounded-md text-sm">
                             <option value="red">Vermelho</option>
                             <option value="yellow">Amarelo</option>
-                            <option value="green">Verde</option>
+                            <option value="lime">Verde</option>
                         </select>
                     </div>
                     <div className="p-2">
