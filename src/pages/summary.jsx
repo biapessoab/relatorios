@@ -27,19 +27,22 @@ function Summary() {
     const procedimentosFiltrados = procedimentos.filter(item => item.price > 0);
     const cirurgiasFiltradas = cirurgias.filter(item => item.price > 0);
 
+    const procedimentosUnderline = `decoration-${colorProcedimentos}`
+    const cirurgiasUnderline = `decoration-${colorCirurgias}`
+
     return (
         <div>
             <div className="flex justify-center">
                 <form className="pt-12" method="form" action="/summary">
                     <div className="flex justify-center text-4xl text-white mb-10">Resumo</div>
-                    <div className={`my-6 text-lg underline text-white decoration-${colorProcedimentos}-500 underline-offset-4`}>Procedimentos</div>
+                    <div className={`my-6 text-lg underline text-white underline-offset-4 ${procedimentosUnderline}`}>Procedimentos</div>
                     {procedimentosFiltrados.map((item, index) => (
                         <div key={index} className='text-white'>
                             <p>{item.nome} ({item.quant}): R$ {item.price}</p>
                             <hr />
                         </div>
                     ))}
-                    <div className={`my-6 text-lg underline text-white decoration-${colorCirurgias}-500 underline-offset-4`}>Cirurgias</div>
+                    <div className={`my-6 text-lg underline text-white underline-offset-4 ${cirurgiasUnderline}`}>Cirurgias</div>
                     {cirurgiasFiltradas.map((item, index) => (
                         <div key={index} className='text-white'>
                             <p>{item.nome}: R$ {item.price}</p>

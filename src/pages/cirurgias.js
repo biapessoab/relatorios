@@ -155,7 +155,7 @@ export default function Cirurgias() {
                     <label className="text-white text-md pl-10">Perfiloplastia</label>
                 </div>
                 <div className="flex justify-end text-white pt-4">
-                    <input type="submit" value="Submit" className="border rounded-md p-1"></input>
+                    <input type="submit" value="Próximo" className="border rounded-md p-1"></input>
                 </div>
             </form>
         </div>
