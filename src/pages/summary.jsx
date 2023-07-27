@@ -81,7 +81,7 @@ function Summary() {
                     <input
                         type="number"
                         id="percentage"
-                        className="border rounded-md p-1 w-12 my-4 inline-block bg-white text-black h-6"
+                        className="border rounded-md p-1 w-12 my-4 inline-block bg-white text-black h-6 text-center"
                         value={percentage}
                         onChange={(e) => setPercentage(e.target.value)}
                     />

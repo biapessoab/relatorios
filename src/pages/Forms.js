@@ -7,7 +7,7 @@ export default function Form() {
 
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
-    if (password === "123") {
+    if (password === process.env.REACT_APP_CODE) {
       history.push("/procedimentos");
     } else {
       alert("Acesso negado");

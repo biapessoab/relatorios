@@ -4,6 +4,7 @@ import Procedimentos from './pages/procedimentos.js'
 import Cirurgias from './pages/cirurgias.js'
 import Summary from './pages/summary.jsx'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+// require('dotenv').config()
 
 function App() {
   return (
