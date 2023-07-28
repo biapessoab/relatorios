@@ -38,6 +38,14 @@ function Summary() {
         } else {
             setValorFinal(sumProcedimentos + sumCirurgias);
         }
+
+        const pString = localStorage.getItem('password');
+        const p = JSON.parse(pString);
+        
+        if (p === null) {
+            history.push("/");
+        }
+
     }, [desconto, percentage, sumProcedimentos, sumCirurgias]);
 
     const procedimentosFiltrados = procedimentos.filter(item => item.price > 0);
@@ -60,7 +68,7 @@ function Summary() {
     return (
         <div>
             <div className="flex justify-center bg-green h-screen">
-                <form className="pt-12" onSubmit={submit} autoComplete='off' action='/document'>
+                <form className="pt-6" onSubmit={submit} autoComplete='off' action='/document'>
                     <div className="flex justify-center text-4xl text-white mb-6">Resumo</div>
                     <div className="flex justify-center pb-2">
                         <select name="color" id="color" className="bg-white rounded-md text-sm">

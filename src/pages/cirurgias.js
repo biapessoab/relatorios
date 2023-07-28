@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Cirurgias() {
 
@@ -80,6 +81,15 @@ export default function Cirurgias() {
     const goToPreviousPage = () => {
         history.push('/procedimentos');
     };
+
+    useEffect(() => {
+        const pString = localStorage.getItem('password');
+        const p = JSON.parse(pString);
+        
+        if (p === null) {
+            history.push("/");
+        }
+    })
 
     return (
         <div className="flex justify-center bg-green h-screen">

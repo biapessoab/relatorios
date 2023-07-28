@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Procedimentos() {
 
@@ -56,10 +57,19 @@ export default function Procedimentos() {
         history.push('/');
     };
 
+    useEffect(() => {
+        const pString = localStorage.getItem('password');
+        const p = JSON.parse(pString);
+        
+        if (p === null) {
+            history.push("/");
+        }
+    })
+
     return (
         <div>
             <div className="flex justify-center bg-green h-screen">
-                <form className="pt-12" method="form" onSubmit={calculate} action='/cirurgias'>
+                <form className="pt-6" method="form" onSubmit={calculate} action='/cirurgias'>
                     <div className='flex justify-center text-4xl text-white mb-10'>
                         Procedimentos
                     </div>

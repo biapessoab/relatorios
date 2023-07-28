@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Document() {
 
@@ -10,6 +11,7 @@ export default function Document() {
     const [desconto, setDesconto] = useState(null);
     const [soma, setSoma] = useState(0);
     const date = new Date();
+    const history = useHistory();
 
     useEffect(() => {
         const nameString = localStorage.getItem('name');
@@ -39,6 +41,13 @@ export default function Document() {
         const descontoString = localStorage.getItem('valorDesconto');
         const desconto = JSON.parse(descontoString);
         setDesconto(desconto);
+
+        const pString = localStorage.getItem('password');
+        const p = JSON.parse(pString);
+        
+        if (p === null) {
+            history.push("/");
+        }
     }, []);
 
     if (pagamento === 'aVista') {
