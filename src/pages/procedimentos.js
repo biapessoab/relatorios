@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 export default function Procedimentos() {
 
     function calculate() {
@@ -10,7 +12,6 @@ export default function Procedimentos() {
         let skynbooster = document.getElementById('skynbooster')
         let bioestimuladorFacial = document.getElementById('bioestimulador-facial')
         let bioestimuladorCorporal = document.getElementById('bioestimulador-corporal')
-        let color = document.getElementById('color')
 
         if (botox.value === null) {
             botox = 0
@@ -46,25 +47,21 @@ export default function Procedimentos() {
         const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * 2900 };
         const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * 2900 };
 
-        const colorData = color.value
-        localStorage.setItem('colorProcedimentos', JSON.stringify(colorData));
         const array = [botoxData, botoxFullfaceData, preenchimentoData, preenchimentoLabialData, rinomodelacaoData, skynboosterData, bioestimuladorFacialData, bioestimuladorCorporalData];
         localStorage.setItem('procedimentos', JSON.stringify(array));
     }
 
+    const history = useHistory();
+    const goToPreviousPage = () => {
+        history.goBack();
+    };
+
     return (
         <div>
-            <div className="flex justify-center">
+            <div className="flex justify-center bg-green h-screen">
                 <form className="pt-12" method="form" onSubmit={calculate} action='/cirurgias'>
                     <div className='flex justify-center text-4xl text-white mb-10'>
                         Procedimentos
-                    </div>
-                    <div className="flex justify-center pb-6">
-                        <select name="color" id="color" className="bg-white rounded-md text-sm">
-                            <option value="red">Vermelho</option>
-                            <option value="yellow">Amarelo</option>
-                            <option value="lime">Verde</option>
-                        </select>
                     </div>
                     <div className="p-2">
                         <input type="number" id='botox' className="w-16 text-center bg-white"></input>
@@ -98,9 +95,9 @@ export default function Procedimentos() {
                         <input type="number" id='bioestimulador-corporal' className="w-16 text-center bg-white"></input>
                         <label className="text-white text-md pl-10">Bio Estimulador de Colágeno Corporal</label>
                     </div>
-                    <div className="flex justify-end text-white pt-4">
-                        <input type="submit" value="Próximo" className="border rounded-md p-1"></input>
-                    </div>
+                    <div className="flex justify-start text-white pt-4">
+                        <button onClick={goToPreviousPage} className="border rounded-md p-2 mr-64">Anterior</button>
+                        <input type="submit" value="Próximo" className=" border rounded-md p-1 cursor-pointer" />                    </div>
                 </form>
             </div>
         </div>

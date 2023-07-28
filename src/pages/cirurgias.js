@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 export default function Cirurgias() {
 
     function calculate() {
@@ -14,7 +16,6 @@ export default function Cirurgias() {
         let orelhaAbano = document.getElementById('orelha-abano')
         let proteseMento = document.getElementById('protese-mento')
         let perfiloplastia = document.getElementById('perfiloplastia')
-        let color = document.getElementById('color')
 
         if (silicone.value === null) {
             silicone = 0
@@ -70,24 +71,20 @@ export default function Cirurgias() {
         const proteseMentoData = { nome: 'Prótese de mento', price: proteseMento.value };
         const perfiloplastiaData = { nome: 'Perfiloplastia', price: perfiloplastia.value };
 
-        const colorData = color.value
-        localStorage.setItem('colorCirurgias', JSON.stringify(colorData));
         const array = [siliconeData, mamoplastiaData, mastopexiaProteseData, mastopexiaData, lipoaspiracaoData, abdominoplastiaData, transplanteData, blefaroplastiaData, rinoplastiaData, liftingData, orelhaAbanoData, proteseMentoData, perfiloplastiaData];
         localStorage.setItem('cirurgias', JSON.stringify(array));
     }
 
+    const history = useHistory();
+    const goToPreviousPage = () => {
+        history.push('/procedimentos');
+    };
+
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center bg-green h-screen">
             <form className="pt-6" method="form" onSubmit={calculate} action='/summary'>
                 <div className='flex justify-center text-4xl text-white mb-10'>
                     Cirurgias
-                </div>
-                <div className="flex justify-center pb-6">
-                    <select name="color" id="color" className="bg-white rounded-md text-sm">
-                        <option value="red">Vermelho</option>
-                        <option value="yellow">Amarelo</option>
-                        <option value="lime">Verde</option>
-                    </select>
                 </div>
                 <div className="p-2">
                     <div className="text-white inline-block px-2">R$</div>
@@ -154,9 +151,10 @@ export default function Cirurgias() {
                     <input type="number" id='perfiloplastia' className="w-20 text-center bg-white"></input>
                     <label className="text-white text-md pl-10">Perfiloplastia</label>
                 </div>
-                <div className="flex justify-end text-white pt-4">
-                    <input type="submit" value="Próximo" className="border rounded-md p-1"></input>
-                </div>
+                <div className="flex justify-start text-white pt-4">
+                        <button onClick={goToPreviousPage} className="border rounded-md p-2 mr-64">Anterior</button>
+                        <input type="submit" value="Próximo" className=" border rounded-md p-1 cursor-pointer" />                    
+                        </div>
             </form>
         </div>
     )

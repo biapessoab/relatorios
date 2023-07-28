@@ -3,13 +3,13 @@ import Forms from './pages/Forms.js'
 import Procedimentos from './pages/procedimentos.js'
 import Cirurgias from './pages/cirurgias.js'
 import Summary from './pages/summary.jsx'
+import Document from './pages/document.js'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-// require('dotenv').config()
 
 function App() {
   return (
     <Router>
-    <div className='bg-green h-screen'>
+    <div className='h-screen'>
       <Switch>
         <Route exact path='/'>
           <Forms />
@@ -22,6 +22,9 @@ function App() {
         </Route>
         <Route exact path='/summary'>
           <Summary />
+        </Route>
+        <Route exact path='/document'>
+          <Document />
         </Route>
       </Switch>
     </div>
