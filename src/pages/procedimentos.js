@@ -53,7 +53,7 @@ export default function Procedimentos() {
 
     const history = useHistory();
     const goToPreviousPage = () => {
-        history.goBack();
+        history.push('/');
     };
 
     return (

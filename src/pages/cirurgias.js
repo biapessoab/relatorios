@@ -8,6 +8,7 @@ export default function Cirurgias() {
         let mastopexiaProtese = document.getElementById('mastopexia-protese')
         let mastopexia = document.getElementById('mastopexia')
         let lipoaspiracao = document.getElementById('lipoaspiracao')
+        let tipoLipoaspiracao = document.getElementById('tipoLipoaspiracao')
         let abdominoplastia = document.getElementById('abdominoplastia')
         let transplante = document.getElementById('transplante')
         let blefaroplastia = document.getElementById('blefaroplastia')
@@ -61,7 +62,7 @@ export default function Cirurgias() {
         const mamoplastiaData = { nome: 'Mamoplastia', price: mamoplastia.value };
         const mastopexiaProteseData = { nome: 'Mastopexia com prótese', price: mastopexiaProtese.value };
         const mastopexiaData = { nome: 'Mastopexia', price: mastopexia.value };
-        const lipoaspiracaoData = { nome: 'Lipoaspiração', price: lipoaspiracao.value };
+        const lipoaspiracaoData = { nome: `Lipoaspiração de ${tipoLipoaspiracao.value}`, price: lipoaspiracao.value };
         const abdominoplastiaData = { nome: 'Abdominoplastia', price: abdominoplastia.value };
         const transplanteData = { nome: 'Transplante Capilar', price: transplante.value };
         const blefaroplastiaData = { nome: 'Blefaroplastia', price: blefaroplastia.value };
@@ -88,38 +89,8 @@ export default function Cirurgias() {
                 </div>
                 <div className="p-2">
                     <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='silicone' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Implante de silicone</label>
-                </div>
-                <div className="p-2">
-                    <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='mamoplastia' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Mamoplastia redutora</label>
-                </div>
-                <div className="p-2">
-                    <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='mastopexia-protese' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Mastopexia com prótese</label>
-                </div>
-                <div className="p-2">
-                    <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='mastopexia' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Mastopexia</label>
-                </div>
-                <div className="p-2">
-                    <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='lipoaspiracao' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Lipoaspiração</label>
-                </div>
-                <div className="p-2">
-                    <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='abdominoplastia' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Abdominoplastia</label>
-                </div>
-                <div className="p-2">
-                    <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='transplante' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Transplante Capilar</label>
+                    <input type="number" id='lifting' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Lifting Facial</label>
                 </div>
                 <div className="p-2">
                     <div className="text-white inline-block px-2">R$</div>
@@ -133,23 +104,59 @@ export default function Cirurgias() {
                 </div>
                 <div className="p-2">
                     <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='lifting' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Lifting Facial</label>
+                    <input type="number" id='orelha-abano' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Correção de orelha de abano</label>
                 </div>
                 <div className="p-2">
                     <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='orelha-abano' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Correção de orelha de abano</label>
+                    <input type="number" id='transplante' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Transplante Capilar</label>
+                </div>
+                <div className="p-2">
+                    <div className="text-white inline-block px-2">R$</div>
+                    <input type="number" id='perfiloplastia' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Perfiloplastia</label>
                 </div>
                 <div className="p-2">
                     <div className="text-white inline-block px-2">R$</div>
                     <input type="number" id='protese-mento' className="w-20 text-center bg-white"></input>
                     <label className="text-white text-md pl-10">Prótese de mento</label>
                 </div>
+
+
+                {/* lipo de submento */}
+
+
                 <div className="p-2">
                     <div className="text-white inline-block px-2">R$</div>
-                    <input type="number" id='perfiloplastia' className="w-20 text-center bg-white"></input>
-                    <label className="text-white text-md pl-10">Perfiloplastia</label>
+                    <input type="number" id='silicone' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Mamoplastia de aumento</label>
+                </div>
+                <div className="p-2">
+                    <div className="text-white inline-block px-2">R$</div>
+                    <input type="number" id='mamoplastia' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Mamoplastia redutora</label>
+                </div>
+                <div className="p-2">
+                    <div className="text-white inline-block px-2">R$</div>
+                    <input type="number" id='mastopexia' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Mastopexia</label>
+                </div>
+                <div className="p-2">
+                    <div className="text-white inline-block px-2">R$</div>
+                    <input type="number" id='mastopexia-protese' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Mastopexia com prótese</label>
+                </div>
+                <div className="p-2">
+                    <div className="text-white inline-block px-2">R$</div>
+                    <input type="number" id='abdominoplastia' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Abdominoplastia</label>
+                </div>
+                <div className="p-2">
+                    <div className="text-white inline-block px-2">R$</div>
+                    <input type="number" id='lipoaspiracao' className="w-20 text-center bg-white"></input>
+                    <label className="text-white text-md pl-10">Lipoaspiração de</label>
+                    <input type="text" id='tipoLipoaspiracao' className="w-40 px-2 bg-white mx-2"></input>
                 </div>
                 <div className="flex justify-start text-white pt-4">
                         <button onClick={goToPreviousPage} className="border rounded-md p-2 mr-64">Anterior</button>

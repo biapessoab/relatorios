@@ -23,11 +23,11 @@ export default function Form() {
 
   return (
     <div className="bg-green h-screen pt-36 text-white text-center">
-      <div className="text-4xl mb-10">Sistema de geração de relatórios</div>
+      <div className="text-4xl mb-10">Gerenciador de orçamentos</div>
       <form onSubmit={handlePasswordSubmit} autocomplete="off">
-      <label for="name" class="block mb-2 font-medium text-gray-900 dark:text-white">Nome</label>
+      <label for="name" class="block mb-2 font-medium text-gray-900 text-white">Nome</label>
         <input type="text" id='name' class="bg-white sm:text-sm rounded-lg p-2 text-black mb-10 w-64 text-center"></input>
-        <label for="password" class="block mb-2 font-medium text-gray-900 dark:text-white">Código de acesso</label>
+        <label for="password" class="block mb-2 font-medium text-gray-900 text-white">Código de acesso</label>
           <input
             type="password" id="password" placeholder="••••••••" class="bg-white sm:text-sm rounded-lg p-2 text-black mb-6"
             onChange={(e) => setPassword(e.target.value)}

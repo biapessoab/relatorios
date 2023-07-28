@@ -7,6 +7,8 @@ export default function Document() {
     const [name, setName] = useState('');
     const [pagamento, setPagamento] = useState(null);
     const [detalhamento, setDetalhamento] = useState(null);
+    const [desconto, setDesconto] = useState(null);
+    const [soma, setSoma] = useState(0);
     const date = new Date();
 
     useEffect(() => {
@@ -29,11 +31,19 @@ export default function Document() {
         const detalhamentoString = localStorage.getItem('detalhamento');
         const detalhamento = JSON.parse(detalhamentoString);
         setDetalhamento(detalhamento);
+
+        const somaString = localStorage.getItem('soma');
+        const soma = JSON.parse(somaString);
+        setSoma(soma);
+
+        const descontoString = localStorage.getItem('valorDesconto');
+        const desconto = JSON.parse(descontoString);
+        setDesconto(desconto);
     }, []);
 
-    if(pagamento === 'aVista') {
+    if (pagamento === 'aVista') {
         setPagamento('À vista')
-    } else if(pagamento === 'parcelado') {
+    } else if (pagamento === 'parcelado') {
         setPagamento('Parcelado')
     }
 
@@ -42,48 +52,57 @@ export default function Document() {
 
     return (
         <div className="bg-white text-start p-10 text-black pt-12">
-            <div className='text-4xl mt-20 mb-10'>
+            <div className='text-3xl mt-20 mb-10'>
                 Proposta de tratamento e orçamento
             </div>
             <div className='my-4'>
                 <div className='inline font-semibold text-lg'>Nome: </div> {name}
             </div>
-            {/* <div classNam
-             */}
             <div className='my-10'>
                 <div className='inline font-semibold text-lg'>Procedimento proposto:</div>
                 {procedimentosFiltrados.length > 0 ?
-                        <div>
-                            <div className="my-4 underline underline-offset-4">Procedimentos</div>
-                            {procedimentosFiltrados.map((item, index) => {
-                                return (
-                                    <div>
-                                        <div key={index}>
-                                            <p>{item.nome} ({item.quant}): R$ {item.price}</p>
-                                        </div>
+                    <div>
+                        <div className="my-4 underline underline-offset-4 font-semibold">Estéticos:</div>
+                        {procedimentosFiltrados.map((item, index) => {
+                            return (
+                                <div>
+                                    <div key={index}>
+                                        <p>{item.nome} ({item.quant}): R$ {item.price}</p>
                                     </div>
-                                );
-                            })}                       
-                            </div>
-                        :
-                        <></>
-                    }
-                    {cirurgiasFiltradas.length > 0 ?
-                        <div>
-                            <div className="my-6 underline underline-offset-4">Cirurgias</div>
-                            {cirurgiasFiltradas.map((item, index) => {
-                                return (
-                                    <div>
-                                        <div key={index}>
-                                            <p>{item.nome}: R$ {item.price}</p>
-                                        </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    :
+                    <></>
+                }
+                {cirurgiasFiltradas.length > 0 ?
+                    <div>
+                        <div className="my-4 underline underline-offset-4 font-semibold">Cirúrgicos:</div>
+                        {cirurgiasFiltradas.map((item, index) => {
+                            return (
+                                <div>
+                                    <div key={index}>
+                                        <p>{item.nome}: R$ {item.price}</p>
                                     </div>
-                                );
-                            })}
-                        </div>
-                        :
-                        <></>
-                    }
+                                </div>
+                            );
+                        })}
+                    </div>
+                    :
+                    <></>
+                }
+                <div className='mt-4'></div>
+                {desconto > 0 ?
+                    <div>
+                        <hr />
+                        <div className='my-2'>- Desconto: R$ {desconto}</div>
+                    </div>
+                    :
+                    <></>
+                }
+                <hr />
+                <div className='my-2'><b>Total:</b> R$ {soma}</div>
             </div>
             <div className='my-10'>
                 <div className='inline font-semibold text-lg'>Pagamento: </div> {pagamento} - {detalhamento}
