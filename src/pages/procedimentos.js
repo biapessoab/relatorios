@@ -14,10 +14,6 @@ export default function Procedimentos() {
         let bioestimuladorFacial = document.getElementById('bioestimulador-facial')
         let bioestimuladorCorporal = document.getElementById('bioestimulador-corporal')
 
-        let bioestimuladorCorporalPrice = 2900
-        let bioestimuladorFacialPrice = 2900
-        let preenchimentoPrice = 1750
-
         if (botox.value === null) {
             botox = 0
         }
@@ -43,39 +39,14 @@ export default function Procedimentos() {
             bioestimuladorCorporal = 0
         }
 
-        if (bioestimuladorFacial.value === 1) {
-            bioestimuladorFacialPrice = 2900
-        } else if(bioestimuladorFacial.value >= 2 && bioestimuladorFacial.value < 5) {
-            bioestimuladorFacialPrice = 2800
-        } else if(bioestimuladorFacial.value >= 5) {
-            bioestimuladorFacialPrice = 2610
-        }
-
-        if (bioestimuladorCorporal.value === 1) {
-            bioestimuladorCorporalPrice = 2900
-        } else if(bioestimuladorCorporal.value >= 2 && bioestimuladorCorporal.value < 5) {
-            bioestimuladorCorporalPrice = 2800
-        } else if(bioestimuladorCorporal.value >= 5) {
-            bioestimuladorCorporalPrice = 2610
-        }
-
-        if (preenchimento.value === 1) {
-            preenchimentoPrice = 1750
-        } else if(preenchimento.value >= 2 && preenchimento.value < 5) {
-            preenchimentoPrice = 1700
-        } else if(preenchimento.value >= 5) {
-            preenchimentoPrice = 1487.5
-        }
-
         const botoxData = { nome: 'Botox', quant: botox.value, price: botox.value * 1300 };
         const botoxFullfaceData = { nome: 'Botox Full Face', quant: botoxFullface.value, price: botoxFullface.value * 2600 };
-        const preenchimentoData = { nome: 'Preenchimento', quant: preenchimento.value, price: preenchimento.value * preenchimentoPrice };
+        const preenchimentoData = { nome: 'Preenchimento', quant: preenchimento.value, price: preenchimento.value * 1750 };
         const preenchimentoLabialData = { nome: 'Preenchimento Labial', quant: preenchimentoLabial.value, price: preenchimentoLabial.value * 5000 };
         const rinomodelacaoData = { nome: 'Rinomodelação', quant: rinomodelacao.value, price: rinomodelacao.value * 5000 };
         const skynboosterData = { nome: 'Skynbooster', quant: skynbooster.value, price: skynbooster.value * 1750 };
-        const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * bioestimuladorFacialPrice };
-        const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * bioestimuladorCorporalPrice };
-
+        const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * 2900 };
+        const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * 2900 };
 
         const array = [botoxData, botoxFullfaceData, preenchimentoData, preenchimentoLabialData, rinomodelacaoData, skynboosterData, bioestimuladorFacialData, bioestimuladorCorporalData];
         localStorage.setItem('procedimentos', JSON.stringify(array));

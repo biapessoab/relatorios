@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Logo from '../logoClinica2.png'
 
 export default function Form() {
   const history = useHistory();
@@ -23,8 +22,7 @@ export default function Form() {
   };
 
   return (
-    <div className="bg-green h-screen  text-white text-center">
-    <div className="pt-36">
+    <div className="bg-green h-screen pt-36 text-white text-center">
       <div className="text-4xl mb-10">Gerenciador de orçamentos</div>
       <form onSubmit={handlePasswordSubmit} autoComplete="off">
         <label htmlFor="name" className="block mb-2 font-medium text-gray-900 text-white">Nome</label>
@@ -51,7 +49,6 @@ export default function Form() {
           Entrar
         </button>
       </form>
-    </div>
     </div>
   );
 }
