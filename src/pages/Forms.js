@@ -24,7 +24,6 @@ export default function Form() {
 
   return (
     <div className="bg-green h-screen  text-white text-center">
-      <img src={require('../logoClinica2.png')} alt="React Logo" className=" px-4 py-2"/>
     <div className="pt-36">
       <div className="text-4xl mb-10">Gerenciador de orçamentos</div>
       <form onSubmit={handlePasswordSubmit} autoComplete="off">
