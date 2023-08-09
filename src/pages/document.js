@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 export default function Document() {
 
@@ -10,11 +9,8 @@ export default function Document() {
     const [percentage, setPercentage] = useState(null);
     const [desconto, setDesconto] = useState(null);
     const [parcelasSelecionadas, setParcelasSelecionadas] = useState(null)
-    // const [numParcelas, setNumParcelas] = (null)
-    // const [maxDesconto, setMaxDesconto] = (null)
     const [soma, setSoma] = useState(0);
     const date = new Date();
-    const history = useHistory();
 
     useEffect(() => {
         const nameString = localStorage.getItem('name');
@@ -51,7 +47,7 @@ export default function Document() {
 
         // const pString = localStorage.getItem('password');
         // const p = JSON.parse(pString);
- 
+
     }, []);
 
     if (pagamento === 'aVista') {
@@ -118,16 +114,42 @@ export default function Document() {
                 <div className='my-2'><b>Total:</b> R$ {soma.toFixed(2)}</div>
             </div>
             <div className='my-10'>
-                <div className='inline font-semibold text-lg'>Pagamento: </div> {pagamento} - 
-                {percentage > 0 ?
-                <div className='inline ml-1'>
-                    {percentage}%
-                </div>
-                    :
-                    <div className='inline ml-1'>
-                    {parcelasSelecionadas}x
-                    </div>
+                <div className='inline font-semibold text-lg mr-1'>Pagamento: </div> {pagamento}
+                {
+                    procedimentosFiltrados.length > 0 ?
+                        <>
+                            {
+                                pagamento === "Parcelado" ?
+                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x</div>
+                                    :
+                                    <div className='mx-1 inline'>- {percentage}%</div>
+                            }
+                        </>
+                        :
+                        <>
+                            {
+                                pagamento === "Parcelado" ?
+                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x</div>
+                                    :
+                                    <div className='mx-1 inline'>- R${desconto}</div>
+                            }
+                        </>
                 }
+                {/* {procedimentosFiltrados.length > 0 ?
+                    <div className='inline ml-1'>
+                        -{percentage}%
+                    </div>
+                    :
+                    <>
+                    {parcelasSelecionadas != 0 ?
+                        <div className='inline ml-1'>
+                            {parcelasSelecionadas}x
+                        </div>
+                        :
+                        <></>
+                    }
+                    </>
+                } */}
                 <div className='text-xs flex'>* Orçamento válido por 45 dias</div>
             </div>
             <div className='mt-28'>Belo Horizonte, {date.toLocaleDateString('pt-BR')}</div>

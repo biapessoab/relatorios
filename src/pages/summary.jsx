@@ -10,7 +10,7 @@ function Summary() {
     const [numParcelas, setNumParcelas] = useState(0);
     const [maxDesconto, setMaxDesconto] = useState(0);
     const [parcelasSelecionadas, setParcelasSelecionadas] = useState(0);
-    const [selectedPayment, setSelectedPayment] = useState('aVista'); 
+    const [selectedPayment, setSelectedPayment] = useState('aVista');
     const pagamento = document.getElementById('pagamento');
 
     let sumProcedimentos = 0;
@@ -42,11 +42,11 @@ function Summary() {
             setValorFinal(sumProcedimentos + sumCirurgias);
         }
 
-        if (sumProcedimentos + sumCirurgias < 12000) {
+        if (sumProcedimentos < 12000) {
             setNumParcelas(4)
             setMaxDesconto(3.5)
         }
-        else if (sumProcedimentos + sumCirurgias >= 12000 && sumProcedimentos + sumCirurgias < 25000) {
+        else if (sumProcedimentos >= 12000 && sumProcedimentos < 25000) {
             setNumParcelas(6)
             setMaxDesconto(5)
         } else {
@@ -133,74 +133,97 @@ function Summary() {
                     }
                     <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Valor Final</div>
                     <div className='text-white inline mr-14'>R$: {valorFinal.toFixed(2)}</div>
-                    {/* <div>
-                        <label className='text-white mr-2'>R$</label>
-                        <input
-                            type="number"
-                            id="desconto"
-                            className="border rounded-md p-1 w-12 my-4 inline-block bg-white text-black h-6 mr-20"
-                            value={desconto}
-                            onChange={(e) => setDesconto(parseFloat(e.target.value))}
-                        />
-                        <input
-                            type="number"
-                            id="percentage"
-                            className="border rounded-md p-1 w-12 my-4 inline-block bg-white text-black h-6"
-                            value={percentage}
-                            onChange={(e) => setPercentage(e.target.value)}
-                        />
-                        <label className='text-white m-2'>%</label>
-                    </div> */}
 
-                    <div>
-                        <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Forma de Pagamento</div>
-                        <select
-                            name="pagamento"
-                            id="pagamento"
-                            className="bg-white rounded-md text-sm mr-10"
-                            onChange={(e) => setSelectedPayment(e.target.value)} // Atualizar o estado ao selecionar uma opção
-                        >
-                            <option value="aVista">À vista</option>
-                            <option value="parcelado">Parcelado</option>
-                        </select>
-
-                        {/* Renderizar o input baseado na opção de pagamento selecionada */}
-                        {selectedPayment === 'aVista' ? (
-                            <>
-                                <input
-                                    type="number"
-                                    id="percentage"
-                                    step="any"
-                                    className="border rounded-md p-1 w-16 my-4 inline-block bg-white text-black h-6"
-                                    value={percentage}
-                                    onChange={(e) => {
-                                        const newPercentage = parseFloat(e.target.value);
-                                        if (!isNaN(newPercentage) && newPercentage >= 0 && newPercentage <= 10 && newPercentage <= maxDesconto) {
-                                            setPercentage(newPercentage);
-                                        } else {
-                                            setPercentage(''); // Clear the input value if not valid
-                                        }
-                                    }}
-                                />
-                                <label className='text-white m-2'>%</label>
-                            </>
-                        ) : (
+                    {procedimentosFiltrados.length > 0 ?
+                        <div>
+                            <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Forma de Pagamento</div>
                             <select
-                                name="numeroParcelas"
-                                id="numeroParcelas"
-                                className="bg-white rounded-md text-sm"
-                                onChange={(e) => setParcelasSelecionadas(parseInt(e.target.value))}
-                                value={parcelasSelecionadas}
+                                name="pagamento"
+                                id="pagamento"
+                                className="bg-white rounded-md text-sm mr-10"
+                                onChange={(e) => setSelectedPayment(e.target.value)} 
                             >
-                                {/* Opções de 1 a 10 */}
-                                {Array.from({ length: numParcelas }, (_, i) => (
-                                    <option key={i + 1} value={i + 1}>
-                                        {i + 1} parcela{i > 0 ? 's' : ''}
-                                    </option>
-                                ))}
+                                <option value="aVista">À vista</option>
+                                <option value="parcelado">Parcelado</option>
                             </select>
-                        )}
-                    </div>
+
+                            {selectedPayment === 'aVista' ? (
+                                <>
+                                    <input
+                                        type="number"
+                                        id="percentage"
+                                        step="any"
+                                        className="border rounded-md p-1 w-16 my-4 inline-block bg-white text-black h-6"
+                                        value={percentage}
+                                        onChange={(e) => {
+                                            const newPercentage = parseFloat(e.target.value);
+                                            if (!isNaN(newPercentage) && newPercentage >= 0 && newPercentage <= 10 && newPercentage <= maxDesconto) {
+                                                setPercentage(newPercentage);
+                                            } else {
+                                                setPercentage(''); // Clear the input value if not valid
+                                            }
+                                        }}
+                                    />
+                                    <label className='text-white m-2'>%</label>
+                                </>
+                            ) : (
+                                <select
+                                    name="numeroParcelas"
+                                    id="numeroParcelas"
+                                    className="bg-white rounded-md text-sm"
+                                    onChange={(e) => setParcelasSelecionadas(parseInt(e.target.value))}
+                                    value={parcelasSelecionadas}
+                                >
+                                    {/* Opções de 1 a 10 */}
+                                    {Array.from({ length: numParcelas }, (_, i) => (
+                                        <option key={i + 1} value={i + 1}>
+                                            {i + 1} parcela{i > 0 ? 's' : ''}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
+                        </div>
+                        :
+                        <div>
+                            <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Forma de Pagamento</div>
+                            <select
+                                name="pagamento"
+                                id="pagamento"
+                                className="bg-white rounded-md text-sm mr-10"
+                                onChange={(e) => setSelectedPayment(e.target.value)} // Atualizar o estado ao selecionar uma opção
+                            >
+                                <option value="aVista">À vista</option>
+                                <option value="parcelado">Parcelado</option>
+                            </select>
+
+                            {/* Renderizar o input baseado na opção de pagamento selecionada */}
+                            {selectedPayment === 'aVista' ? (
+                                <>
+                                    <label className='text-white mr-2'>R$</label>
+                                    <input
+                                        type="number"
+                                        id="desconto"
+                                        className="border rounded-md p-1 w-12 my-4 inline-block bg-white text-black h-6 mr-20"
+                                        onChange={(e) => setDesconto(parseInt(e.target.value))}
+                                    />
+                                </>
+                            ) : (
+                                <select
+                                    name="numeroParcelas"
+                                    id="numeroParcelas"
+                                    className="bg-white rounded-md text-sm"
+                                    onChange={(e) => setParcelasSelecionadas(parseInt(e.target.value))}
+                                    value={parcelasSelecionadas}
+                                >
+                                    {Array.from({ length: 10 }, (_, i) => (
+                                        <option key={i + 1} value={i + 1}>
+                                            {i + 1} parcela{i > 0 ? 's' : ''}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
+                        </div>
+                    }
 
                     <div className="flex justify-start text-white pt-4">
                         <button onClick={goToPreviousPage} className="border rounded-md p-2 mr-32">Anterior</button>
