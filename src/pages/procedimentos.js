@@ -39,14 +39,14 @@ export default function Procedimentos() {
             bioestimuladorCorporal = 0
         }
 
-        const botoxData = { nome: 'Botox', quant: botox.value, price: botox.value * 1300 };
-        const botoxFullfaceData = { nome: 'Botox Full Face', quant: botoxFullface.value, price: botoxFullface.value * 2600 };
-        const preenchimentoData = { nome: 'Preenchimento', quant: preenchimento.value, price: preenchimento.value * 1750 };
-        const preenchimentoLabialData = { nome: 'Preenchimento Labial', quant: preenchimentoLabial.value, price: preenchimentoLabial.value * 5000 };
-        const rinomodelacaoData = { nome: 'Rinomodelação', quant: rinomodelacao.value, price: rinomodelacao.value * 5000 };
-        const skynboosterData = { nome: 'Skynbooster', quant: skynbooster.value, price: skynbooster.value * 1750 };
-        const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * 2900 };
-        const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * 2900 };
+        const botoxData = { nome: 'Botox', quant: botox.value, price: botox.value * process.env.REACT_APP_BOTOX };
+        const botoxFullfaceData = { nome: 'Botox Full Face', quant: botoxFullface.value, price: botoxFullface.value * process.env.REACT_APP_BOTOX_FULLFACE };
+        const preenchimentoData = { nome: 'Preenchimento', quant: preenchimento.value, price: preenchimento.value * process.env.REACT_APP_PREENCHIMENTO };
+        const preenchimentoLabialData = { nome: 'Preenchimento Labial', quant: preenchimentoLabial.value, price: preenchimentoLabial.value * process.env.REACT_APP_PREENCHIMENTO_LABIAL };
+        const rinomodelacaoData = { nome: 'Rinomodelação', quant: rinomodelacao.value, price: rinomodelacao.value * process.env.REACT_APP_RINOMODELACAO };
+        const skynboosterData = { nome: 'Skynbooster', quant: skynbooster.value, price: skynbooster.value * process.env.REACT_APP_SKYNBOOSTER };
+        const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * process.env.REACT_APP_BIOESTIMULADOR_FACIAL };
+        const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * process.env.REACT_APP_BIOESTIMULADOR_CORPORAL };
 
         const array = [botoxData, botoxFullfaceData, preenchimentoData, preenchimentoLabialData, rinomodelacaoData, skynboosterData, bioestimuladorFacialData, bioestimuladorCorporalData];
         localStorage.setItem('procedimentos', JSON.stringify(array));
