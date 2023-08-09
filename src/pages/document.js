@@ -7,8 +7,11 @@ export default function Document() {
     const [cirurgias, setCirurgias] = useState([]);
     const [name, setName] = useState('');
     const [pagamento, setPagamento] = useState(null);
-    const [detalhamento, setDetalhamento] = useState(null);
+    const [percentage, setPercentage] = useState(null);
     const [desconto, setDesconto] = useState(null);
+    const [parcelasSelecionadas, setParcelasSelecionadas] = useState(null)
+    // const [numParcelas, setNumParcelas] = (null)
+    // const [maxDesconto, setMaxDesconto] = (null)
     const [soma, setSoma] = useState(0);
     const date = new Date();
     const history = useHistory();
@@ -30,10 +33,6 @@ export default function Document() {
         const pagamento = JSON.parse(pagamentoString);
         setPagamento(pagamento);
 
-        const detalhamentoString = localStorage.getItem('detalhamento');
-        const detalhamento = JSON.parse(detalhamentoString);
-        setDetalhamento(detalhamento);
-
         const somaString = localStorage.getItem('soma');
         const soma = JSON.parse(somaString);
         setSoma(soma);
@@ -42,12 +41,17 @@ export default function Document() {
         const desconto = JSON.parse(descontoString);
         setDesconto(desconto);
 
-        const pString = localStorage.getItem('password');
-        const p = JSON.parse(pString);
-        
-        if (p === null) {
-            history.push("/");
-        }
+        const percentageString = localStorage.getItem('percentage');
+        const percentage = JSON.parse(percentageString);
+        setPercentage(percentage);
+
+        const parcelasSelecionadasString = localStorage.getItem('parcelasSelecionadas');
+        const parcelasSelecionadas = JSON.parse(parcelasSelecionadasString);
+        setParcelasSelecionadas(parcelasSelecionadas);
+
+        // const pString = localStorage.getItem('password');
+        // const p = JSON.parse(pString);
+ 
     }, []);
 
     if (pagamento === 'aVista') {
@@ -105,16 +109,25 @@ export default function Document() {
                 {desconto > 0 ?
                     <div>
                         <hr />
-                        <div className='my-2'>- Desconto: R$ {desconto}</div>
+                        <div className='my-2'>- Desconto: R$ {desconto.toFixed(2)}</div>
                     </div>
                     :
                     <></>
                 }
                 <hr />
-                <div className='my-2'><b>Total:</b> R$ {soma}</div>
+                <div className='my-2'><b>Total:</b> R$ {soma.toFixed(2)}</div>
             </div>
             <div className='my-10'>
-                <div className='inline font-semibold text-lg'>Pagamento: </div> {pagamento} - {detalhamento}
+                <div className='inline font-semibold text-lg'>Pagamento: </div> {pagamento} - 
+                {percentage > 0 ?
+                <div className='inline ml-1'>
+                    {percentage}%
+                </div>
+                    :
+                    <div className='inline ml-1'>
+                    {parcelasSelecionadas}x
+                    </div>
+                }
                 <div className='text-xs flex'>* Orçamento válido por 45 dias</div>
             </div>
             <div className='mt-28'>Belo Horizonte, {date.toLocaleDateString('pt-BR')}</div>
