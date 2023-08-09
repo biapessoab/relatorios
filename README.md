@@ -12,3 +12,9 @@ A ideia do projeto é facilitar e otimizar as consultas de um médico. Assim, co
 
 ## Telas
 ![Procedimentos - Tela 1](/src/assets/procedimentos.png)
+
+![Cirurgias - Tela 1](/src/assets/cirurgias.png)
+
+![Resumo - Tela 1](/src/assets/resumo.png)
+
+![Documento - Tela 1](/src/assets/documento.png)
