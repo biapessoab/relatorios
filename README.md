@@ -5,7 +5,10 @@ A ideia do projeto é facilitar e otimizar as consultas de um médico. Assim, co
 É possível rodá-lo, mas não acessá-lo, devido à existência de um código de acesso
 
 `yarn install`
+
 `yarn build`
+
 `yarn start`
 
-## Telasd
+## Telas
+![Procedimentos - Tela 1](/src/assets/procedimentos.png)
