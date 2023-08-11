@@ -13,6 +13,13 @@ export default function Procedimentos() {
         let skynbooster = document.getElementById('skynbooster')
         let bioestimuladorFacial = document.getElementById('bioestimulador-facial')
         let bioestimuladorCorporal = document.getElementById('bioestimulador-corporal')
+        let lisoAgulhado = document.getElementById('liso-agulhado')
+        let lisoDuplo = document.getElementById('liso-duplo')
+        let parafuso = document.getElementById('parafuso')
+        let filler = document.getElementById('filler')
+        let matrix = document.getElementById('matrix')
+        let sculpt = document.getElementById('sculpt')
+        let espiculado = document.getElementById('espiculado')
 
         if (botox.value === null) {
             botox = 0
@@ -38,6 +45,28 @@ export default function Procedimentos() {
         if (bioestimuladorCorporal.value === null) {
             bioestimuladorCorporal = 0
         }
+        if (lisoAgulhado.value === null) {
+            lisoAgulhado = 0
+        }
+        if (lisoDuplo.value === null) {
+            lisoDuplo = 0
+        }
+        if (parafuso.value === null) {
+            parafuso = 0
+        }
+        if (filler.value === null) {
+            filler = 0
+        }
+        if (matrix.value === null) {
+            matrix = 0
+        }
+        if (sculpt.value === null) {
+            sculpt = 0
+        }
+        if (espiculado.value === null) {
+            espiculado = 0
+        }
+        
 
         const botoxData = { nome: 'Botox', quant: botox.value, price: botox.value * process.env.REACT_APP_BOTOX };
         const botoxFullfaceData = { nome: 'Botox Full Face', quant: botoxFullface.value, price: botoxFullface.value * process.env.REACT_APP_BOTOX_FULLFACE };
@@ -47,8 +76,15 @@ export default function Procedimentos() {
         const skynboosterData = { nome: 'Skynbooster', quant: skynbooster.value, price: skynbooster.value * process.env.REACT_APP_SKYNBOOSTER };
         const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * process.env.REACT_APP_BIOESTIMULADOR_FACIAL };
         const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * process.env.REACT_APP_BIOESTIMULADOR_CORPORAL };
+        const lisoAgulhadoData = { nome: 'Fio PDO - Liso Agulhado', quant: lisoAgulhado.value, price: lisoAgulhado.value * process.env.REACT_APP_LISO_AGULHADO };
+        const lisoDuploData = { nome: 'Fio PDO - Liso Duplo', quant: lisoDuplo.value, price: lisoDuplo.value * process.env.REACT_APP_LISO_DUPLO };
+        const parafusoData = { nome: 'Fio PDO - Parafuso', quant: parafuso.value, price: parafuso.value * process.env.REACT_APP_PARAFUSO };
+        const fillerData = { nome: 'Fio PDO - Filler', quant: filler.value, price: filler.value * process.env.REACT_APP_FILLER };
+        const matrixData = { nome: 'Fio PDO - Matrix', quant: matrix.value, price: matrix.value * process.env.REACT_APP_MATRIX };
+        const sculptData = { nome: 'Fio PDO - Sculpt', quant: sculpt.value, price: sculpt.value * process.env.REACT_APP_SCULPT };
+        const espiculadoData = { nome: 'Fio PDO - Espiculado', quant: espiculado.value, price: espiculado.value * process.env.REACT_APP_ESPICULADO };
 
-        const array = [botoxData, botoxFullfaceData, preenchimentoData, preenchimentoLabialData, rinomodelacaoData, skynboosterData, bioestimuladorFacialData, bioestimuladorCorporalData];
+        const array = [botoxData, botoxFullfaceData, preenchimentoData, preenchimentoLabialData, rinomodelacaoData, skynboosterData, bioestimuladorFacialData, bioestimuladorCorporalData, lisoAgulhadoData, lisoDuploData, parafusoData, fillerData, matrixData, sculptData, espiculadoData];
         localStorage.setItem('procedimentos', JSON.stringify(array));
     }
 
@@ -68,11 +104,12 @@ export default function Procedimentos() {
 
     return (
         <div>
-            <div className="flex justify-center bg-green h-screen">
+            <div className="flex justify-center bg-green h-full">
                 <form className="pt-6" method="form" onSubmit={calculate} action='/cirurgias'>
                     <div className='flex justify-center text-4xl text-white mb-10'>
                         Procedimentos
                     </div>
+                    
                     <div className="p-2">
                         <input type="number" id='botox' className="w-16 text-center bg-white"></input>
                         <label className="text-white text-md pl-10">Botox</label>
@@ -105,9 +142,40 @@ export default function Procedimentos() {
                         <input type="number" id='bioestimulador-corporal' className="w-16 text-center bg-white"></input>
                         <label className="text-white text-md pl-10">Bio Estimulador de Colágeno Corporal</label>
                     </div>
+                    <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Fios de PDO</div>
+                    <div className="p-2">
+                        <input type="number" id='liso-agulhado' className="w-16 text-center bg-white"></input>
+                        <label className="text-white text-md pl-10">Liso Agulhado</label>
+                    </div>
+                    <div className="p-2">
+                        <input type="number" id='liso-duplo' className="w-16 text-center bg-white"></input>
+                        <label className="text-white text-md pl-10">Liso Canulado/Duplo</label>
+                    </div>
+                    <div className="p-2">
+                        <input type="number" id='parafuso' className="w-16 text-center bg-white"></input>
+                        <label className="text-white text-md pl-10">Parafuso</label>
+                    </div>
+                    <div className="p-2">
+                        <input type="number" id='filler' className="w-16 text-center bg-white"></input>
+                        <label className="text-white text-md pl-10">Filler</label>
+                    </div>
+                    <div className="p-2">
+                        <input type="number" id='matrix' className="w-16 text-center bg-white"></input>
+                        <label className="text-white text-md pl-10">Matrix</label>
+                    </div>
+                    <div className="p-2">
+                        <input type="number" id='sculpt' className="w-16 text-center bg-white"></input>
+                        <label className="text-white text-md pl-10">Sculpt</label>
+                    </div>
+                    <div className='mb-10'>
+                    <div className="p-2">
+                        <input type="number" id='espiculado' className="w-16 text-center bg-white"></input>
+                        <label className="text-white text-md pl-10">Espiculado</label>
+                    </div>
                     <div className="flex justify-start text-white pt-4">
                         <button onClick={goToPreviousPage} className="border rounded-md p-2 mr-64">Anterior</button>
                         <input type="submit" value="Próximo" className=" border rounded-md p-1 cursor-pointer" />                    </div>
+                    </div>
                 </form>
             </div>
         </div>
