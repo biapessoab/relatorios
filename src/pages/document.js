@@ -60,14 +60,14 @@ export default function Document() {
     const cirurgiasFiltradas = cirurgias.filter(item => item.price > 0);
 
     return (
-        <div className="bg-white text-start p-10 text-black pt-12">
-            <div className='text-3xl mt-20 mb-10'>
+        <div className="bg-white text-start p-10 text-black">
+            <div className='text-3xl mt-4 mb-10'>
                 Proposta de tratamento e orçamento
             </div>
             <div className='my-4'>
                 <div className='inline font-semibold text-lg'>Nome: </div> {name}
             </div>
-            <div className='my-10'>
+            <div className='my-8'>
                 <div className='inline font-semibold text-lg'>Procedimento proposto:</div>
                 {procedimentosFiltrados.length > 0 ?
                     <div>
@@ -101,7 +101,9 @@ export default function Document() {
                     :
                     <></>
                 }
-                <div className='mt-4'></div>
+                <hr />
+                <div className='mt-4'><b>Total do tratamento:</b> R$ {(soma + desconto).toFixed(2)}</div>
+                <div className='my-2'></div>
                 {desconto > 0 ?
                     <div>
                         <hr />
@@ -111,27 +113,39 @@ export default function Document() {
                     <></>
                 }
                 <hr />
-                <div className='my-2'><b>Total:</b> R$ {soma.toFixed(2)}</div>
+                {
+                    desconto > 0 ?
+                <div className='my-2'><b>Valor final com desconto:</b> R$ {soma.toFixed(2)}</div>
+                : 
+                <></>
+                }
             </div>
-            <div className='my-10'>
+            <div className='my-8'>
                 <div className='inline font-semibold text-lg mr-1'>Pagamento: </div> {pagamento}
                 {
                     procedimentosFiltrados.length > 0 ?
                         <>
                             {
                                 pagamento === "Parcelado" ?
-                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x</div>
+                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x de {(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div>
                                     :
-                                    <div className='mx-1 inline'>- {percentage}%</div>
+                                    <>
+                                    {
+                                        percentage > 0 ?
+                                        <div className='mx-1 inline'>- {percentage}%</div>
+                                        :
+                                        <></>
+                                    }
+                                    </>
                             }
                         </>
                         :
                         <>
                             {
                                 pagamento === "Parcelado" ?
-                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x</div>
+                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x de {(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div>
                                     :
-                                    <div className='mx-1 inline'>- R${desconto}</div>
+                                    <div className='mx-1 inline'>- R${soma}</div>
                             }
                         </>
                 }
@@ -150,10 +164,29 @@ export default function Document() {
                     }
                     </>
                 } */}
-                <div className='text-xs flex'>* Orçamento válido por 45 dias</div>
+                <div className='flex mb-2 mt-6 font-semibold'>* Orçamento válido por 45 dias.</div>
+                {
+                    procedimentosFiltrados.length > 0 ?
+                        <>
+                            <div className='text-sm flex'>
+                                * O pagamento à vista poderá ser no PIX, TED ou dinheiro.
+                            </div>
+                            <div className='text-sm flex'>
+                                * Os parcelamentos poderão ser realizados por meio de cartões de crédito, sendo possível utilizar mais de um cartão.
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className='text-sm flex'> * Entrada de 60% à vista (PIX, TED ou dinheiro) e o restante no cartão de crédito em até 10 vezes sem juros. </div>
+                            <div className='text-sm flex'>* Em todas as opções os acertos deverão ser realizados até 07 dias antes do procedimento, no consultório. Não aceitamos cheques de terceiros e pré datados.</div>
+                            <div className='text-sm flex'> * Estes valores não incluem próteses, medicamentos ou outros tratamentos complementares e exames que possam ser solicitados no preparo pré-operatório, durante a cirurgia ou no período pós-cirúrgico. Estas despesas deverão ser pagas à vista até 07 dias antes da cirurgia.</div>
+                            <div className='text-sm flex'>*Os valores poderão variar com as mudanças das tabelas dos hospitais ou caso mude a programação proposta para este(s) procedimentos.</div>
+                            <div className='text-sm flex'> * Os parcelamentos poderão ser realizados por meio de cartões de crédito, sendo possível utilizar mais de um cartão.</div>
+                        </>
+                }
             </div>
-            <div className='mt-28'>Belo Horizonte, {date.toLocaleDateString('pt-BR')}</div>
-            <div className='mt-20 text-center'>
+            <div className='mt-16'>Belo Horizonte, {date.toLocaleDateString('pt-BR')}</div>
+            <div className='mt-16 text-center bottom-2'>
                 _______________________________________________________
             </div>
             <div className='text-center'>Clínica Dr. Eduardo Braz</div>

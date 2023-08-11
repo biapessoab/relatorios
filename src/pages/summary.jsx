@@ -86,13 +86,6 @@ function Summary() {
             <div className="flex justify-center bg-green h-screen">
                 <form className="pt-6" onSubmit={submit} autoComplete='off' action='/document'>
                     <div className="flex justify-center text-4xl text-white mb-6">Resumo</div>
-                    <div className="flex justify-center pb-2">
-                        <select name="color" id="color" className="bg-white rounded-md text-sm">
-                            <option value="red">Vermelho</option>
-                            <option value="yellow">Amarelo</option>
-                            <option value="lime">Verde</option>
-                        </select>
-                    </div>
                     {procedimentosFiltrados.length > 0 ?
                         <div>
                             <div className="my-4 text-lg underline text-white underline-offset-4">Procedimentos</div>
@@ -131,8 +124,6 @@ function Summary() {
                         :
                         <></>
                     }
-                    <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Valor Final</div>
-                    <div className='text-white inline mr-14'>R$: {valorFinal.toFixed(2)}</div>
 
                     {procedimentosFiltrados.length > 0 ?
                         <div>
@@ -141,7 +132,7 @@ function Summary() {
                                 name="pagamento"
                                 id="pagamento"
                                 className="bg-white rounded-md text-sm mr-10"
-                                onChange={(e) => setSelectedPayment(e.target.value)} 
+                                onChange={(e) => setSelectedPayment(e.target.value)}
                             >
                                 <option value="aVista">À vista</option>
                                 <option value="parcelado">Parcelado</option>
@@ -185,6 +176,16 @@ function Summary() {
                         </div>
                         :
                         <div>
+                            <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Negociação</div>
+                            <label className='text-white mr-2'>R$</label>
+                                    <input
+                                        type="number"
+                                        id="desconto"
+                                        className="border rounded-md p-1 w-12 my-4 inline-block bg-white text-black h-6 mr-20"
+                                        max='1000'
+                                        onChange={(e) => setDesconto(parseInt(e.target.value))}
+                                    />
+
                             <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Forma de Pagamento</div>
                             <select
                                 name="pagamento"
@@ -199,13 +200,18 @@ function Summary() {
                             {/* Renderizar o input baseado na opção de pagamento selecionada */}
                             {selectedPayment === 'aVista' ? (
                                 <>
-                                    <label className='text-white mr-2'>R$</label>
                                     <input
                                         type="number"
-                                        id="desconto"
-                                        className="border rounded-md p-1 w-12 my-4 inline-block bg-white text-black h-6 mr-20"
-                                        onChange={(e) => setDesconto(parseInt(e.target.value))}
+                                        id="percentage"
+                                        step="any"
+                                        className="border rounded-md p-1 w-16 my-4 inline-block bg-white text-black h-6"
+                                        onChange={(e) => {
+                                            if(e.target.value <= 5) {
+                                                setPercentage(e.target.value)
+                                            }
+                                        }}
                                     />
+                                    <label className='text-white m-2'>%</label>
                                 </>
                             ) : (
                                 <select
@@ -224,6 +230,8 @@ function Summary() {
                             )}
                         </div>
                     }
+                    <div className="mt-6 mb-2 text-lg underline text-white underline-offset-4">Valor Final</div>
+                    <div className='text-white inline mr-14'>R$: {valorFinal.toFixed(2)}</div>
 
                     <div className="flex justify-start text-white pt-4">
                         <button onClick={goToPreviousPage} className="border rounded-md p-2 mr-32">Anterior</button>
