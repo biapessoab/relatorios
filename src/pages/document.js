@@ -45,9 +45,6 @@ export default function Document() {
         const parcelasSelecionadas = JSON.parse(parcelasSelecionadasString);
         setParcelasSelecionadas(parcelasSelecionadas);
 
-        // const pString = localStorage.getItem('password');
-        // const p = JSON.parse(pString);
-
     }, []);
 
     if (pagamento === 'aVista') {
@@ -61,9 +58,16 @@ export default function Document() {
 
     return (
         <div className="bg-white text-start p-10 text-black">
+            {
+                procedimentosFiltrados.length > 0 ?
             <div className='text-3xl mt-4 mb-10'>
                 Proposta de tratamento e orçamento
             </div>
+            :
+            <div className='text-3xl mt-4 mb-16'>
+                Proposta de tratamento e orçamento
+                </div>
+            }
             <div className='my-4'>
                 <div className='inline font-semibold text-lg'>Nome: </div> {name}
             </div>
@@ -101,18 +105,15 @@ export default function Document() {
                     :
                     <></>
                 }
-                <hr />
                 <div className='mt-4'><b>Total do tratamento:</b> R$ {(soma + desconto).toFixed(2)}</div>
                 <div className='my-2'></div>
                 {desconto > 0 ?
                     <div>
-                        <hr />
-                        <div className='my-2'>- Desconto: R$ {desconto.toFixed(2)}</div>
+                        <div className='my-2'><b>Desconto:</b> R$ {desconto.toFixed(2)}</div>
                     </div>
                     :
                     <></>
                 }
-                <hr />
                 {
                     desconto > 0 ?
                 <div className='my-2'><b>Valor final com desconto:</b> R$ {soma.toFixed(2)}</div>
