@@ -76,7 +76,7 @@ export default function Document() {
                             return (
                                 <div>
                                     <div key={index}>
-                                        <p>{item.nome} ({item.quant}): R$ {item.price}</p>
+                                        <p>{item.nome} ({item.quant}): R$ {(item.price).toFixed(2)}</p>
                                     </div>
                                 </div>
                             );
@@ -92,7 +92,7 @@ export default function Document() {
                             return (
                                 <div>
                                     <div key={index}>
-                                        <p>{item.nome}: R$ {item.price}</p>
+                                        <p>{item.nome}: R$ {parseFloat(item.price).toFixed(2)}</p>
                                     </div>
                                 </div>
                             );
@@ -121,7 +121,7 @@ export default function Document() {
                 }
             </div>
             <div className='my-8'>
-                <div className='inline font-semibold text-lg mr-1'>Pagamento: </div> {pagamento}
+                <div className='inline font-semibold text-lg mr-1'>Pagamento {pagamento}:</div>
                 {
                     procedimentosFiltrados.length > 0 ?
                         <>
@@ -143,9 +143,14 @@ export default function Document() {
                         <>
                             {
                                 pagamento === "Parcelado" ?
-                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x de {(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div>
+                                <>
+
+                                    <div className='block'>Entrada de 60% à vista R${(soma*0.6).toFixed(2)}<br></br>
+
+                                     <div>{parcelasSelecionadas}x de R${(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div></div>
+                                     </>
                                     :
-                                    <div className='mx-1 inline'>- R${soma}</div>
+                                    <div className='mx-1 inline-block'>- R${soma}</div>
                             }
                         </>
                 }
