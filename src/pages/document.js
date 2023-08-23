@@ -47,11 +47,13 @@ export default function Document() {
 
     }, []);
 
-    if (pagamento === 'aVista') {
-        setPagamento('À vista')
-    } else if (pagamento === 'parcelado') {
-        setPagamento('Parcelado')
-    }
+    useEffect(() => {
+        if (pagamento === 'aVista') {
+            setPagamento('à vista')
+        } else if (pagamento === 'parcelado') {
+            setPagamento('parcelado')
+        }
+    }, []);
 
     const procedimentosFiltrados = procedimentos.filter(item => item.price > 0);
     const cirurgiasFiltradas = cirurgias.filter(item => item.price > 0);
@@ -60,13 +62,13 @@ export default function Document() {
         <div className="bg-white text-start p-10 text-black">
             {
                 procedimentosFiltrados.length > 0 ?
-            <div className='text-3xl mt-4 mb-10'>
-                Proposta de tratamento e orçamento
-            </div>
-            :
-            <div className='text-3xl mt-4 mb-16'>
-                Proposta de tratamento e orçamento
-                </div>
+                    <div className='text-3xl mt-4 mb-6'>
+                        Proposta de tratamento e orçamento
+                    </div>
+                    :
+                    <div className='text-3xl mt-4 mb-16'>
+                        Proposta de tratamento e orçamento
+                    </div>
             }
             <div className='my-4'>
                 <div className='inline font-semibold text-lg'>Nome: </div> {name}
@@ -108,68 +110,56 @@ export default function Document() {
                 <div className='mt-4'><b>Total do tratamento:</b> R$ {(soma + desconto).toFixed(2)}</div>
                 <div className='my-2'></div>
                 {desconto > 0 ?
-                    <div>
-                        <div className='my-2'><b>Desconto:</b> R$ {desconto.toFixed(2)}</div>
-                    </div>
+                    <>
+                        {
+                            procedimentosFiltrados.length > 0 ?
+                                <div className='my-2'><b>Desconto à vista ({percentage}%):</b> R$ {desconto.toFixed(2)}</div>
+                                :
+                                <div className='my-2'><b>Desconto:</b> R$ {desconto.toFixed(2)}</div>
+                        }
+                    </>
                     :
                     <></>
                 }
                 {
                     desconto > 0 ?
-                <div className='my-2'><b>Valor final com desconto:</b> R$ {soma.toFixed(2)}</div>
-                : 
-                <></>
+                        <div className='my-2'><b>Valor final com desconto:</b> R$ {soma.toFixed(2)}</div>
+                        :
+                        <></>
                 }
             </div>
             <div className='my-8'>
-                <div className='inline font-semibold text-lg mr-1'>Pagamento {pagamento}:</div>
                 {
                     procedimentosFiltrados.length > 0 ?
                         <>
                             {
-                                pagamento === "Parcelado" ?
-                                    <div className='mx-1 inline'>- {parcelasSelecionadas}x de {(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div>
-                                    :
+                                pagamento === "parcelado" ?
                                     <>
-                                    {
-                                        percentage > 0 ?
-                                        <div className='mx-1 inline'>- {percentage}%</div>
-                                        :
-                                        <></>
-                                    }
+                                        <div className='inline font-semibold text-lg mr-1'>Pagamento {pagamento}:</div>
+                                        <div className='mx-1 inline'>{parcelasSelecionadas}x de {(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div>
                                     </>
+                                    :
+                                    <></>
                             }
                         </>
                         :
                         <>
                             {
-                                pagamento === "Parcelado" ?
-                                <>
+                                pagamento === "parcelado" ?
+                                    <>
+                                        <div className='inline font-semibold text-lg mr-1'>Pagamento {pagamento}:</div>
+                                        <div className='block'>Entrada de 60% à vista R${(soma * 0.6).toFixed(2)}<br></br>
 
-                                    <div className='block'>Entrada de 60% à vista R${(soma*0.6).toFixed(2)}<br></br>
-
-                                     <div>{parcelasSelecionadas}x de R${(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div></div>
-                                     </>
+                                            <div>{parcelasSelecionadas}x de R${(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div></div>
+                                    </>
                                     :
-                                    <div className='mx-1 inline-block'>- R${soma}</div>
+                                    <>
+                                        <div className='inline font-semibold text-lg mr-1'>Pagamento à vista:</div>
+                                        <div className='mx-1 inline-block'> R${soma.toFixed(2)}</div>
+                                    </>
                             }
                         </>
                 }
-                {/* {procedimentosFiltrados.length > 0 ?
-                    <div className='inline ml-1'>
-                        -{percentage}%
-                    </div>
-                    :
-                    <>
-                    {parcelasSelecionadas != 0 ?
-                        <div className='inline ml-1'>
-                            {parcelasSelecionadas}x
-                        </div>
-                        :
-                        <></>
-                    }
-                    </>
-                } */}
                 <div className='flex mb-2 mt-6 font-semibold'>* Orçamento válido por 45 dias.</div>
                 {
                     procedimentosFiltrados.length > 0 ?
