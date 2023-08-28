@@ -136,7 +136,7 @@ export default function Document() {
                                 pagamento === "parcelado" ?
                                     <>
                                         <div className='inline font-semibold text-lg mr-1'>Pagamento {pagamento}:</div>
-                                        <div className='mx-1 inline'>{parcelasSelecionadas}x de {(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div>
+                                        <div className='mx-1 inline'>{parcelasSelecionadas}x de {(soma*0.4 / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div>
                                     </>
                                     :
                                     <></>
@@ -150,7 +150,7 @@ export default function Document() {
                                         <div className='inline font-semibold text-lg mr-1'>Pagamento {pagamento}:</div>
                                         <div className='block'>Entrada de 60% à vista R${(soma * 0.6).toFixed(2)}<br></br>
 
-                                            <div>{parcelasSelecionadas}x de R${(soma / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div></div>
+                                            <div>{parcelasSelecionadas}x de R${(soma*0.4 / parcelasSelecionadas).toFixed(2)} no cartão de crédito</div></div>
                                     </>
                                     :
                                     <>
