@@ -79,7 +79,7 @@ export default function Cirurgias() {
 
     const history = useHistory();
     const goToPreviousPage = () => {
-        history.push('/procedimentos');
+        history.push('/summary');
     };
 
     useEffect(() => {
