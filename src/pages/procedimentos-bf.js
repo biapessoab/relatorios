@@ -76,7 +76,7 @@ export default function Procedimentos() {
         const skynboosterData = { nome: 'Skynbooster', quant: skynbooster.value, price: skynbooster.value * process.env.REACT_APP_BF_SKYNBOOSTER };
         const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * process.env.REACT_APP_BF_BIOESTIMULADOR_FACIAL };
         const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * process.env.REACT_APP_BF_BIOESTIMULADOR_CORPORAL };
-        const lisoAgulhadoData = { nome: 'Fio PDO - Liso Agulhado', quant: lisoAgulhado.value, price: lisoAgulhado.value * process.env.REACT_APP_BF_LISO_AGULHADO };
+        const lisoAgulhadoData = { nome: 'Fio PDO - Liso Agulhado (10 fios)', quant: lisoAgulhado.value, price: lisoAgulhado.value * process.env.REACT_APP_BF_LISO_AGULHADO };
         const lisoDuploData = { nome: 'Fio PDO - Liso Duplo', quant: lisoDuplo.value, price: lisoDuplo.value * process.env.REACT_APP_BF_LISO_DUPLO };
         const parafusoData = { nome: 'Fio PDO - Parafuso', quant: parafuso.value, price: parafuso.value * process.env.REACT_APP_BF_PARAFUSO };
         const fillerData = { nome: 'Fio PDO - Filler', quant: filler.value, price: filler.value * process.env.REACT_APP_BF_FILLER };
