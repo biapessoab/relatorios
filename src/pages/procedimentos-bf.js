@@ -68,21 +68,21 @@ export default function Procedimentos() {
         }
         
 
-        const botoxData = { nome: 'Botox', quant: botox.value, price: botox.value * process.env.REACT_APP_BOTOX };
-        const botoxFullfaceData = { nome: 'Botox Full Face', quant: botoxFullface.value, price: botoxFullface.value * process.env.REACT_APP_BOTOX_FULLFACE };
-        const preenchimentoData = { nome: 'Preenchimento', quant: preenchimento.value, price: preenchimento.value * process.env.REACT_APP_PREENCHIMENTO };
-        const preenchimentoLabialData = { nome: 'Preenchimento Labial', quant: preenchimentoLabial.value, price: preenchimentoLabial.value * process.env.REACT_APP_PREENCHIMENTO_LABIAL };
-        const rinomodelacaoData = { nome: 'Rinomodelação', quant: rinomodelacao.value, price: rinomodelacao.value * process.env.REACT_APP_RINOMODELACAO };
-        const skynboosterData = { nome: 'Skynbooster', quant: skynbooster.value, price: skynbooster.value * process.env.REACT_APP_SKYNBOOSTER };
-        const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * process.env.REACT_APP_BIOESTIMULADOR_FACIAL };
-        const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * process.env.REACT_APP_BIOESTIMULADOR_CORPORAL };
-        const lisoAgulhadoData = { nome: 'Fio PDO - Liso Agulhado', quant: lisoAgulhado.value, price: lisoAgulhado.value * process.env.REACT_APP_LISO_AGULHADO };
-        const lisoDuploData = { nome: 'Fio PDO - Liso Duplo', quant: lisoDuplo.value, price: lisoDuplo.value * process.env.REACT_APP_LISO_DUPLO };
-        const parafusoData = { nome: 'Fio PDO - Parafuso', quant: parafuso.value, price: parafuso.value * process.env.REACT_APP_PARAFUSO };
-        const fillerData = { nome: 'Fio PDO - Filler', quant: filler.value, price: filler.value * process.env.REACT_APP_FILLER };
-        const matrixData = { nome: 'Fio PDO - Matrix', quant: matrix.value, price: matrix.value * process.env.REACT_APP_MATRIX };
-        const sculptData = { nome: 'Fio PDO - Sculpt', quant: sculpt.value, price: sculpt.value * process.env.REACT_APP_SCULPT };
-        const espiculadoData = { nome: 'Fio PDO - Espiculado', quant: espiculado.value, price: espiculado.value * process.env.REACT_APP_ESPICULADO };
+        const botoxData = { nome: 'Botox', quant: botox.value, price: botox.value * process.env.REACT_APP_BF_BOTOX };
+        const botoxFullfaceData = { nome: 'Botox Full Face', quant: botoxFullface.value, price: botoxFullface.value * process.env.REACT_APP_BF_BOTOX_FULLFACE };
+        const preenchimentoData = { nome: 'Preenchimento', quant: preenchimento.value, price: preenchimento.value * process.env.REACT_APP_BF_PREENCHIMENTO };
+        const preenchimentoLabialData = { nome: 'Preenchimento Labial', quant: preenchimentoLabial.value, price: preenchimentoLabial.value * process.env.REACT_APP_BF_PREENCHIMENTO_LABIAL };
+        const rinomodelacaoData = { nome: 'Rinomodelação', quant: rinomodelacao.value, price: rinomodelacao.value * process.env.REACT_APP_BF_RINOMODELACAO };
+        const skynboosterData = { nome: 'Skynbooster', quant: skynbooster.value, price: skynbooster.value * process.env.REACT_APP_BF_SKYNBOOSTER };
+        const bioestimuladorFacialData = { nome: 'Bioestimulador Facial', quant: bioestimuladorFacial.value, price: bioestimuladorFacial.value * process.env.REACT_APP_BF_BIOESTIMULADOR_FACIAL };
+        const bioestimuladorCorporalData = { nome: 'Bioestimulador Corporal', quant: bioestimuladorCorporal.value, price: bioestimuladorCorporal.value * process.env.REACT_APP_BF_BIOESTIMULADOR_CORPORAL };
+        const lisoAgulhadoData = { nome: 'Fio PDO - Liso Agulhado', quant: lisoAgulhado.value, price: lisoAgulhado.value * process.env.REACT_APP_BF_LISO_AGULHADO };
+        const lisoDuploData = { nome: 'Fio PDO - Liso Duplo', quant: lisoDuplo.value, price: lisoDuplo.value * process.env.REACT_APP_BF_LISO_DUPLO };
+        const parafusoData = { nome: 'Fio PDO - Parafuso', quant: parafuso.value, price: parafuso.value * process.env.REACT_APP_BF_PARAFUSO };
+        const fillerData = { nome: 'Fio PDO - Filler', quant: filler.value, price: filler.value * process.env.REACT_APP_BF_FILLER };
+        const matrixData = { nome: 'Fio PDO - Matrix', quant: matrix.value, price: matrix.value * process.env.REACT_APP_BF_MATRIX };
+        const sculptData = { nome: 'Fio PDO - Sculpt', quant: sculpt.value, price: sculpt.value * process.env.REACT_APP_BF_SCULPT };
+        const espiculadoData = { nome: 'Fio PDO - Espiculado', quant: espiculado.value, price: espiculado.value * process.env.REACT_APP_BF_ESPICULADO };
 
         const array = [botoxData, botoxFullfaceData, preenchimentoData, preenchimentoLabialData, rinomodelacaoData, skynboosterData, bioestimuladorFacialData, bioestimuladorCorporalData, lisoAgulhadoData, lisoDuploData, parafusoData, fillerData, matrixData, sculptData, espiculadoData];
         localStorage.setItem('procedimentos', JSON.stringify(array));
